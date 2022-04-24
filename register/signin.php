@@ -25,14 +25,14 @@ if(isset($_SESSION['id'])){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-<?php  include("head.php"); ?>
+
+    <?php include(ROOT_PATH . '/register/includes/head.php'); ?>
 
 </head>
 
 <body>
    
-<?php  include("../includes/header.php"); ?>
+<?php include(ROOT_PATH . '/register/includes/header.php'); ?>
 
 <main>
 
@@ -54,14 +54,14 @@ if(isset($_SESSION['id'])){
                     <span>Username Or Email</span>
                     <div>
                         <i class="fa fa-user"></i>
-                        <input id="l_user" type="text" name="user" placeholder="Username or Email" value="<?php echo $user; ?>" oninput="checkLength(this)">
+                        <input id="l_user" type="text" name="user" placeholder="Username or Email" value="<?php echo $user; ?>" oninput="checkLength(this, 4)">
                         <label id="l_user_2" for=""></label>
                     </div>
 
                     <span>Password</span>
                     <div>
                         <i class="fa fa-lock"></i>
-                        <input id = "pass" type="password" placeholder="Password" name="password" oninput="checkLength(this)">
+                        <input id = "pass" type="password" placeholder="Password" name="password" oninput="checkLength(this, 6)">
                         <label id ="l_pass" for=""></label>
                     </div>
 
@@ -69,7 +69,7 @@ if(isset($_SESSION['id'])){
                         <button type="submit" name="sign_in" class="btn"> Login</button>
                     </div>
 
-                    <p>New to <a style= "text-transform: capitalize; display : inline; "><?php echo $companyName; ?></a>? <a href="signup.php">Sign up</a></p>
+                    <p class="">New to ColexMiners? <a href="signup.php">Sign up</a></p>
                     
                     <div style="font-size: 0.8em; text-align:center;"><a href="forgot_password.php"> forgot password?</a></div>
 
@@ -82,7 +82,7 @@ if(isset($_SESSION['id'])){
                     </main>
 
 
-    <?php  include("../includes/footer.php"); ?>
+    <?php include(ROOT_PATH . '/register/includes/footer.php'); ?>
        
 </body>
 </html>

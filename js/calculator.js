@@ -1,7 +1,7 @@
 var Basic = {
     name : "Basic",
     percentage : 10.5,
-    minimum : 50,
+    minimum : 1000,
     maximum : 4999
 
 }
@@ -10,29 +10,29 @@ var Regular= {
     name : "Regular",
     percentage : 14.0,
     minimum :5000,
-    maximum : 29999
+    maximum : 9999
 
 } 
 
-var Premium = {
-    name : "Premium",
+var Standard = {
+    name : "Standard",
     percentage : 21.0,
-    minimum :30000,
-    maximum : 999999999
+    minimum :10000,
+    maximum : 49999
 
 }
 
-var Advanced = {
-    name : "Advanced",
-    percentage : 21.0,
-    minimum :30000,
-    maximum : 100000000
+var Premium = {
+    name : "Premium",
+    percentage : 28.0,
+    minimum :50000,
+    maximum : 10000000000
 
 }
 
 
 function calculate(type){
-var plans = Array(Basic,Regular,Premium,Advanced);
+var plans = Array(Basic,Regular,Standard,Premium);
 
 var select = document.querySelector(".calculator select");
 
@@ -88,7 +88,7 @@ else{
 function calcInvest(){
     
     var expected = document.querySelector("#expecteda");
-    var plans = Array(Basic,Regular,Premium,Advanced);
+    var plans = Array(Basic,Regular,Standard,Premium);
 
     var select = document.querySelector("select");
 
@@ -140,11 +140,11 @@ function calcInv(){
         expect_this = amount.value * 0.015 + " Profit daily";
     }
 
-    else if(plan.value == 'Premium'){
+    else if(plan.value == 'Standard'){
         expect_this = amount.value * 0.020 + " Profit daily";
     }
 
-    else if(plan.value == 'Advanced'){
+    else if(plan.value == 'Premium'){
         expect_this = amount.value * 0.030 + " Profit daily";
     }
 

@@ -40,14 +40,14 @@ $pageName = "Contact";
                 <div class="right">
                     <h1>Our Contact Info</h1>
                     
-                    <p><i class="fa fa-envelope"></i> support@<?php echo $companyEmail;?>.uk </p>
+                    <p><i class="fa fa-envelope"></i> support@<?php echo $companyEmail;?>.com </p>
                     <p><i class="fa fa-map-marker"></i> HQ: <?php echo $companyLocation; ?>  </p>
                     <p>
                         <a href="" id="facebook"><i class="fa fa-facebook"></i></a>
                         <a href="" id="twitter"><i class="fa fa-twitter"></i></a>
                         <a href="" id="instagram"><i class="fa fa-instagram"></i></a>
                         <a href="" id="google-plus"><i class="fa fa-google-plus"></i></a>
-                        <a href="https://wa.me/+" id="whatsapp"><i class="fa fa-whatsapp"></i></a>
+                        <a href="#" id="whatsapp"><i class="fa fa-whatsapp"></i></a>
                     </p>
                 </div>
             </div>

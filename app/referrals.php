@@ -43,7 +43,25 @@ $referrals = selectAll('users', ['referrer_id' => $_SESSION['id']]);
         <div class="trans">
         <h3>Referrals</h3>
             <div class="container">
-                <?php foreach($referrals as $key => $referral): ?>
+                <?php foreach($referrals as $key => $referral): 
+                    
+                    if($shares_tran['status'] == 1){
+                        $shares_tran['status'] = 'pending';
+                    }
+        
+                    if($shares_tran['status'] == 2){
+                        $shares_tran['status'] = 'confirmed';
+                    }
+        
+                    if($shares_tran['status'] == 3){
+                        $shares_tran['status'] = 'completed';
+                    }
+
+                    if($shares_tran['status'] == 0){
+                        $shares_tran['status'] = 'cancelled';
+                    }
+                    
+                    ?>
                 <div class="box">
                     <div class="left">
                         <span><a><?php echo $key + 1 ?></a></span>

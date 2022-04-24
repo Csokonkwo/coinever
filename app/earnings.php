@@ -19,7 +19,21 @@ $transactions = selectAll('interests', ['user_id' => $_SESSION['id']]);
         <h3>Interest History</h3>
         <?php $shares_trans = selectStaz('interests', 15, ['user_id' => $_SESSION['id'], 'type' => 'interest']); ?>
         <div class="container">
-            <?php foreach($shares_trans as $shares_tran): ?>
+            <?php foreach($shares_trans as $shares_tran): 
+                
+                if($shares_tran['status'] == 1){
+                    $shares_tran['status'] = 'pending';
+                }
+    
+                if($shares_tran['status'] == 3){
+                    $shares_tran['status'] = 'paid';
+                }
+
+                if($shares_tran['status'] == 0){
+                    $shares_tran['status'] = 'cancelled';
+                }
+                
+                ?>
             <div class="box">
                 <div class="left">
                     <span>$<?php echo number_format($shares_tran['amount'], 2) ?></span>

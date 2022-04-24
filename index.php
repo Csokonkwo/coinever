@@ -30,57 +30,75 @@ $pageName = "Home";
 
         <!-------------- Hero section --------->
             
-        <div class="hero">
-            <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                    <img src="img/image1.jpg">
-                    <div class="container">
-                        <div class="small">You Grow, We Grow.</div>
-                        <div class="large">With consistency, success will follow</div>
-                        <center>
-                        <a href="<?php echo BASE_URL . '/register/signin.php'?>">Login</a>
-                        <a href="<?php echo BASE_URL . '/register/signup.php'?>" class="reg">Register</a>
-                        </center>
-                    </div>
-                    </div>
-                    <div class="carousel-item">
-                    <img src="img/image2.jpg">
-                    <div class="container">
-
-                        
-                        <div class="small">Build your portfolio with professionals</div>
-                        <div class="large">Advice that is always in your best interest</div>
-                        <center>
-                        <a href="<?php echo BASE_URL . '/register/signin.php'?>">Login</a>
-                        <a href="<?php echo BASE_URL . '/register/signup.php'?>" class="reg">Register</a>
-                        </center>
-                    </div>
-                    </div>
-                    <div class="carousel-item">
-                    <img src="img/image3.jpg">
-                    <div class="container">
-
-                        <div class="small">Don't wait, create opportunity.</div>
-                        <div class="large">Start investing with us today!</div>
-                        <center>
-                        <a href="<?php echo BASE_URL . '/register/signin.php'?>">Login</a>
-                        <a href="<?php echo BASE_URL . '/register/signup.php'?>" class="reg">Register</a>
-                        </center>
-                    </div>
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-                </div>
+        <!-- hero-->
+    <div class="hero">
+      <div
+        id="carouselHero"
+        class="carousel slide pointer-event"
+        data-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="img/cover1.png" />
+            <div class="item-cover">
+              <h1>Customer Account Information Portal</h1>
+              <h3>
+                The Digital Banker’s Middle East; Africa Retail Banking
+                Innovation Awards
+              </h3>
+              <a href="#">Learn More</a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="img/cover2.png" />
+            <div class="item-cover">
+              <h1>Welcome to the new EcoBank online</h1>
+              <h3>
+                The Digital Banker’s Middle East; Africa Retail Banking
+                Innovation Awards
+              </h3>
+              <a href="#">Learn More</a>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="img/cover3.png" />
+            <div class="item-cover">
+              <h1>Customer Account Information Portal</h1>
+              <h3>
+                The Digital Banker’s Middle East; Africa Retail Banking
+                Innovation Awards
+              </h3>
+              <a href="#">Learn More</a>
+            </div>
+          </div>
         </div>
 
+        <a
+          class="carousel-control-prev"
+          href="#carouselHero"
+          role="button"
+          data-slide="prev"
+        >
+          <!-- <i class="fa fa-angle-left" aria-hidden="true"></i> -->
+          <span class="sr-only">Previous</span>
+        </a>
+        <a
+          class="carousel-control-next"
+          href="#carouselHero"
+          role="button"
+          data-slide="next"
+        >
+          <!-- <i class="fa fa-angle-right" aria-hidden="true"></i> -->
+          <span class="sr-only">Next</span>
+        </a>
+
+        <ol class="carousel-indicators">
+          <li data-target="#carouselHero" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselHero" data-slide-to="1"></li>
+          <li data-target="#carouselHero" data-slide-to="2"></li>
+        </ol>
+      </div>
+    </div>
 
         <!-- TradingView Widget BEGIN -->
 
@@ -132,7 +150,7 @@ $pageName = "Home";
                 </div>
                 <div class="box">
                     <div class="content">
-                        <h4> <i class="fa fa-user"></i> Create an Account</h4>
+                        <h4> <a href="register/signup.php"><i class="fa fa-user"></i> Create an Account</a></h4>
                         <p>
                             Creating an account is a free and painless process. Complete the registration form and get one step closer to earning.
                         </p>
@@ -227,7 +245,7 @@ $pageName = "Home";
                 ?>
 
             <div class="box">
-                <img src="<?php echo BASE_URL . '/admin/blog/'. $new['image']; ?>">
+                <img src="<?php echo BASE_URL . '/admin/img/blog/'. $new['image']; ?>">
                 <h2><a href="about/read_blog.php?id=<?php echo $new['id'] ?>"><?php echo $new['title'] ?></a></h2>
                 <span style="text-transform: capitalize"><?php echo $new['username'] ?> • <?php echo date('F j, Y.', strtotime($new['created_at'])); ?></span>
             </div>
@@ -298,7 +316,7 @@ $pageName = "Home";
                         <span style="text-transform: capitalize"><?php echo $user['username'] ?> • <?php echo date('F j, Y.', strtotime($article['created_at'])); ?></span>
                     </div>
 
-                    <img src="<?php echo BASE_URL . '/admin/guide/'. $article['image']; ?>">
+                    <img src="<?php echo BASE_URL . '/admin/guides/img/'. $article['image']; ?>">
                 </div>
                 <?php endforeach; ?>
             </div>
@@ -378,9 +396,21 @@ $pageName = "Home";
                 <img src="img/partners/2.png">
             </div>
             
+            <div class="box">
+                <img src="img/partners/index.png">
+            </div>
+            
         
         </div>
     </div>
+
+    <div style="background-color: #205AAC; text-align:center; padding: 50px 20px; color: white;">
+            <div class="container">
+                <p>
+                    Are you looking for where to Buy Bitcoin or other Cryptocurrency? Visit <a href="https://coinjar.com"> CoinJar</a>
+                </p>
+            </div>
+        </div>
     
 
     </main>

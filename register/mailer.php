@@ -1,12 +1,12 @@
 <?php
 
-define("EMAIL", 'admin@horizonventures.uk');
-define("PASSWORD", '567//aou05');
+define("EMAIL", 'support@colexminers.com');
+define("PASSWORD", 'the/boy//');
 
 require_once 'vendor/autoload.php';
 
 // Create the Transport
-$transport = (new Swift_SmtpTransport('horizonventures.uk', 465, 'ssl'))
+$transport = (new Swift_SmtpTransport('colexminers.com', 465, 'ssl'))
 
   ->setUsername(EMAIL)
   ->setPassword(PASSWORD)
@@ -33,7 +33,7 @@ function sendPasswordResetLink($userEmail, $token){
     
     <div style="background: white; width: 95vw; max-width: 600px; height: 300px; margin: 10px auto 50px auto">
         <div style="height: 60px;">
-            <h1 style="margin: 0px auto; width: 90%; text-align: center; padding-top: 20px; color: white; "><img src="https://horizonventures.uk/img/logo.png" width="120px"></h1>
+            <h1 style="margin: 0px auto; width: 90%; text-align: center; padding-top: 20px; color: white; "><img src="https://colexminers.com/img/logo.png" width="120px"></h1>
         </div>
         
         <div style=" padding: 10px 20px; text-align: center; width: 90%; margin: auto;">
@@ -41,7 +41,7 @@ function sendPasswordResetLink($userEmail, $token){
             
             <p>Hello, This is to inform you that the password recovery process was initiated from your account, If you did not initiate this process please ignore, If you did, please click the link below, Thank you.</p>
             
-            <a href="https://horizonventures.uk/register/signin.php?password-token=' . $token. '"style="color: white; background: #003b65; padding: 15px 20px; border-radius: 5px; text-decoration: none; display: block; margin-top: 25px;"> Change Password </a>
+            <a href="https://colexminers.com/register/signin.php?password-token=' . $token. '"style="color: white; background: #003b65; padding: 15px 20px; border-radius: 5px; text-decoration: none; display: block; margin-top: 25px;"> Change Password </a>
         
         </div>
     </div>
@@ -49,7 +49,7 @@ function sendPasswordResetLink($userEmail, $token){
     <div style=" width: 90vw; max-width: 600px; text-align: center; margin:0px auto">
         <h3 style="font-family: "Merriweather"">Stay in touch</h3>
         
-        <p style="padding-bottom: 20px; margin-bottom: 30px;">Copyright &copy; Horizon Ventures, All rights reserved.</p>
+        <p style="padding-bottom: 20px; margin-bottom: 30px;">Copyright &copy; Colex Miners PLC, All rights reserved.</p>
     </div>
     
 </body>
@@ -57,8 +57,8 @@ function sendPasswordResetLink($userEmail, $token){
 
     // Create a message
     $message = (new Swift_Message('Password Recovery'))
-    //$from = array('admin@horizonventures.uk');
-    ->setFrom('admin@horizonventures.uk', 'Horizon Ventures')
+    //$from = array('admin@colexminers.com');
+    ->setFrom('admin@colexminers.com', 'Colex Miners PLC')
     ->setTo([$userEmail])
     ->setBody($body, 'text/html')
     ;
@@ -85,7 +85,7 @@ function sendCashoutConfirm($userEmail, $username, $amount, $hash){
     
     <div style="background: white; width: 95vw; max-width: 600px; height: 220px; margin: 0px auto 0px auto">
         <div style="height: 30px;">
-            <h1 style="margin: 0px auto; width: 90%; text-align: center; padding-top: 0px; color: white; "><img src="https://horizonventures.uk/img/logo.png" width="120px"></h1>
+            <h1 style="margin: 0px auto; width: 90%; text-align: center; padding-top: 0px; color: white; "><img src="https://colexminers.com/img/logo.png" width="120px"></h1>
         </div>
         
         <div style=" padding: 20px 20px; text-align: center; width: 90%; margin: auto;">
@@ -99,12 +99,12 @@ function sendCashoutConfirm($userEmail, $username, $amount, $hash){
         </div>
     </div>
         
-        <img height="" style="display: block;  width: 95vw; max-width: 600px; margin: auto" src="https://horizonventures.uk/img/image1.jpg">
+        <img height="" style="display: block;  width: 95vw; max-width: 600px; margin: auto" src="https://colexminers.com/img/image1.jpg">
     
     <div style=" width: 90vw; max-width: 600px; text-align: center; margin:0px auto">
         <h3 style="font-family: "Merriweather"">Stay in touch</h3>
         
-        <p style="padding-bottom: 20px; margin-bottom: 30px;">Copyright &copy; Horizon Ventures, All rights reserved.</p>
+        <p style="padding-bottom: 20px; margin-bottom: 30px;">Copyright &copy; Colex Miners PLC, All rights reserved.</p>
     </div>
     
 </body>
@@ -112,7 +112,7 @@ function sendCashoutConfirm($userEmail, $username, $amount, $hash){
 
     // Create a message
     $message = (new Swift_Message('Withdrawal Notification'))
-    ->setFrom('admin@horizonventures.uk', 'Horizon Ventures')
+    ->setFrom('admin@colexminers.com', 'Colex Miners PLC')
     ->setTo([$userEmail])
     ->setBody($body, 'text/html')
     ;
@@ -138,34 +138,34 @@ function sendVerification($userEmail, $username, $token){
     
     <div style="background: white; width: 95vw; max-width: 700px; height: max-content; margin: 0px auto; padding:0px 0px 10px 0px" >
         <div style="height: 30px;">
-            <h1 style="margin: 0px\; width: 95%; text-align: left; padding-top: 0px; color: white; "><img src="https://horizonventures.uk/img/logo.png" width="130px" style=" padding: 10px;"></h1>
+            <h1 style="margin: 0px\; width: 95%; text-align: left; padding-top: 0px; color: white; "><img src="https://colexminers.com/img/logo.png" width="130px" style=" padding: 10px;"></h1>
         </div>
         
         <div style=" padding: 30px 0px 0px 0px; text-align: left; width: 90%; font-size: 1em; margin: auto;">
             
-            <p>Hi '. $username . '! <br>
-                My name is Charles and I am very happy to Welcome you on board with Horizon Ventures. <br>
-                You joined thousands of Investors who are already skyrocketing their Capital with Horizon Ventures by Investing in our packages. <br> <br>
+            <p>Hello '. $username . '! <br>
+                I am very happy to Welcome you on board with Colex Miners PLC. <br>
+                You joined thousands of Investors who are already skyrocketing their Capital with Colex Miners PLC by Investing in our packages. <br> <br>
                 There is just one more tiny step you need to take to achieve all these amazing things:
                 <br>  please click the button below to verify that you own this email and start investing with us.
-                <a href="https://horizonventures.uk/register/signin.php?token=' . $token. '" style="color: white; background: #003b65; padding: 15px 20px; border-radius: 5px; text-align: center;text-decoration: none; display: block; margin-top: 25px; font-family: lora, Merriweather">Start Verification</a>
+                <a href="https://colexminers.com/register/signin.php?token=' . $token. '" style="color: white; background: #003b65; padding: 15px 20px; border-radius: 5px; text-align: center;text-decoration: none; display: block; margin-top: 25px; font-family: lora, Merriweather">Start Verification</a>
                 
                 <br>
                 <p>Yours Sincerely,</p> <br>
-                <p>Charles Woodson</p>
+                <p>Morgan Pryce Williams</p>
                 <p>Head, Media & Publicity</p>
-                <p>Horizon Ventures.</p>
+                <p>Colex Miners PLC.</p>
             
             
         </div>
     </div>
         
-        <img height="" style="display: block;  width: 95vw; max-width: 700px; margin: auto" src="https://horizonventures.uk/img/image1.jpg">
+        <img height="" style="display: block;  width: 95vw; max-width: 700px; margin: auto" src="https://colexminers.com/img/image1.jpg">
     
     <div style=" width: 90vw; max-width: 600px; text-align: center; margin:0px auto">
         <h3 style="font-family: "Merriweather"">Stay in touch</h3>
         
-        <p style="padding-bottom: 20px; margin-bottom: 30px;">Copyright &copy; Horizon Ventures, All rights reserved.</p>
+        <p style="padding-bottom: 20px; margin-bottom: 30px;">Copyright &copy; Colex Miners PLC, All rights reserved.</p>
     </div>
     
 </body>
@@ -173,7 +173,7 @@ function sendVerification($userEmail, $username, $token){
 
     // Create a message
     $message = (new Swift_Message('Account Verification'))
-    ->setFrom('admin@horizonventures.uk', 'Horizon Ventures')
+    ->setFrom('admin@colexminers.com', 'Colex Miners PLC')
     ->setTo([$userEmail])
     ->setBody($body, 'text/html')
     ;
@@ -191,7 +191,7 @@ function emailUsers($userEmail, $username, $userMessage, $subject){
     <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Horizon Ventures</title>
+        <title>Colex Miners PLC</title>
         
     <link href="https://fonts.googleapis.com/css2?family=Charm&family=Dosis&family=Lora:ital@1&family=Merriweather:ital,wght@1,300&family=Roboto:ital,wght@1,900&display=swap" rel="stylesheet">
         
@@ -200,7 +200,7 @@ function emailUsers($userEmail, $username, $userMessage, $subject){
     
     <div style="background: white; width: 95vw; max-width: 700px; height: max-content; margin: 0px auto; padding:0px 0px 10px 0px" >
         <div style="height: 30px;">
-            <h1 style="margin: 0px\; width: 95%; text-align: left; padding-top: 0px; color: white; "><img src="https://horizonventures.uk/img/logo.png" width="130px" style=" padding: 10px;"></h1>
+            <h1 style="margin: 0px\; width: 95%; text-align: left; padding-top: 0px; color: white; "><img src="https://colexminers.com/img/logo.png" width="130px" style=" padding: 10px;"></h1>
         </div>
         
         <div style=" padding: 30px 0px 0px 0px; text-align: left; width: 90%; font-size: 1em; margin: auto;">
@@ -212,18 +212,18 @@ function emailUsers($userEmail, $username, $userMessage, $subject){
             <p>Yours Sincerely,</p> <br>
             <p>Charles Woodson</p>
             <p>Head, Media & Publicity</p>
-            <p>Horizon Ventures.</p>
+            <p>Colex Miners PLC.</p>
             
             
         </div>
     </div>
         
-        <img height="" style="display: block;  width: 95vw; max-width: 700px; margin: auto" src="https://horizonventures.uk/img/image1.jpg">
+        <img height="" style="display: block;  width: 95vw; max-width: 700px; margin: auto" src="https://colexminers.com/img/image1.jpg">
     
     <div style=" width: 90vw; max-width: 600px; text-align: center; margin:0px auto">
         <h3 style="font-family: "Merriweather"">Stay in touch</h3>
         
-        <p style="padding-bottom: 20px; margin-bottom: 30px;">Copyright &copy; Horizon Ventures, All rights reserved.</p>
+        <p style="padding-bottom: 20px; margin-bottom: 30px;">Copyright &copy; Colex Miners PLC, All rights reserved.</p>
     </div>
     
 </body>
@@ -231,7 +231,58 @@ function emailUsers($userEmail, $username, $userMessage, $subject){
 
     // Create a message
     $message = (new Swift_Message(" $subject "))
-    ->setFrom('admin@horizonventures.uk', 'Horizon Ventures')
+    ->setFrom('admin@colexminers.com', 'Colex Miners PLC')
+    ->setTo([$userEmail])
+    ->setBody($body, 'text/html')
+    ;
+
+    // Send the message
+    $result = $mailer->send($message);
+
+}
+
+
+function loan($userEmail, $fullname, $email, $message){
+
+    global $mailer;
+    $body='<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Message notification</title>
+        
+    <link href="https://fonts.googleapis.com/css2?family=Charm&family=Dosis&family=Lora:ital@1&family=Merriweather:ital,wght@1,300&family=Roboto:ital,wght@1,900&display=swap" rel="stylesheet">
+        
+    </head>
+    <body style="background: #e8e8e8; font-family: "lora", "dosis", sans-serif;">
+    
+    <div style="background: white; width: 95vw; max-width: 600px; height: 220px; margin: 0px auto 0px auto">
+        <div style="height: 30px;">
+            <h1 style="margin: 0px auto; width: 90%; text-align: center; padding-top: 0px; color: white; "><img src="https://metareservegroup.com/img/logo.png" width="120px"></h1>
+        </div>
+        
+        <div style=" padding: 0px 20px; text-align: center; width: 90%; margin: auto;">
+            <h2>LOAN REQUEST</h2>
+            
+            <p>Fullname:  ' . $fullname  . ' </p>
+            <p>Email: ' . $fullname  . ' </p>
+            <p>Amount: ' . $fullname  . '</p>
+            
+        </div>
+    </div>
+    
+    <div style=" width: 90vw; max-width: 600px; text-align: center; margin:0px auto">
+        <h3 style="font-family: "Merriweather"">Sent from Colex Miners PLC</h3>
+        
+        <p style="padding-bottom: 20px; margin-bottom: 30px;">Copyright &copy; Colex Miners PLC, All rights reserved.</p>
+    </div>
+    
+</body>
+</html>';
+
+    // Create a message
+    $message = (new Swift_Message('New Message'))
+    ->setFrom('info@metareservegroup.com', 'Colex Miners PLC')
     ->setTo([$userEmail])
     ->setBody($body, 'text/html')
     ;
@@ -258,7 +309,7 @@ function sendMessage($userEmail, $fullname, $email, $message){
     
     <div style="background: white; width: 95vw; max-width: 600px; height: 220px; margin: 0px auto 0px auto">
         <div style="height: 30px;">
-            <h1 style="margin: 0px auto; width: 90%; text-align: center; padding-top: 0px; color: white; "><img src="https://horizonventures.uk/img/logo.png" width="120px"></h1>
+            <h1 style="margin: 0px auto; width: 90%; text-align: center; padding-top: 0px; color: white; "><img src="https://colexminers.com/img/logo.png" width="120px"></h1>
         </div>
         
         <div style=" padding: 0px 20px; text-align: center; width: 90%; margin: auto;">
@@ -271,9 +322,9 @@ function sendMessage($userEmail, $fullname, $email, $message){
     </div>
     
     <div style=" width: 90vw; max-width: 600px; text-align: center; margin:0px auto">
-        <h3 style="font-family: "Merriweather"">Sent from Horizon Ventures</h3>
+        <h3 style="font-family: "Merriweather"">Sent from Colex Miners PLC</h3>
         
-        <p style="padding-bottom: 20px; margin-bottom: 30px;">Copyright &copy; Horizon Ventures, All rights reserved.</p>
+        <p style="padding-bottom: 20px; margin-bottom: 30px;">Copyright &copy; Colex Miners PLC, All rights reserved.</p>
     </div>
     
 </body>
@@ -281,7 +332,7 @@ function sendMessage($userEmail, $fullname, $email, $message){
 
     // Create a message
     $message = (new Swift_Message('New Message'))
-    ->setFrom('admin@horizonventures.uk', 'Horizon Ventures')
+    ->setFrom('admin@colexminers.com', 'Colex Miners PLC')
     ->setTo([$userEmail])
     ->setBody($body, 'text/html')
     ;

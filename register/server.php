@@ -1,7 +1,7 @@
 <?php
 
 require (ROOT_PATH . '/includes/dbFunctions.php');
-require 'mailer.php';
+require (ROOT_PATH . '/register/mailer.php');
 
 $errors =array();
 $username = '';
@@ -15,21 +15,13 @@ $phone = '';
 $gender = '';
 $country = '';
 
-//CODINGS FOR SIGING USERS UP GOES HERE
 
-if(isset($_POST['sign_up'])){
-
+if(isset($_POST['sign_up'])){ //dd($_POST);
     
     unset($_POST['sign_up'], $_POST['checkbox']);
 
-    //validation
-
-    if(strlen($_POST['username']) < 4){
-        $errors['username'] = "Username must be 4 - 10 characters";
-    }
-
-    if(strlen($_POST['username']) > 20){
-        $errors['username'] = "Username must be 4 - 20 characters";
+    if(strlen($_POST['username']) < 4 || strlen($_POST['username']) > 20){
+        $errors['username'] = "Username must be between 4 - 20 characters";
     }
 
     if(strlen($_POST['country']) < 3){
@@ -40,12 +32,8 @@ if(isset($_POST['sign_up'])){
         $errors['email'] = "Invalid Email Address";
     }
 
-    if(empty($_POST['email'])){
-        $errors['email'] = "Please enter your Email address";
-    }
-
-    if(strlen($_POST['password']) < 5){
-        $errors['password'] = "Password must be atleast 5 characters";
+    if(strlen($_POST['password']) < 6 || strlen($_POST['password']) > 15){
+        $errors['password'] = "Password must be between 6 - 15 characters";
     }
 
     if($_POST['password'] != $_POST['password_2']){
@@ -57,13 +45,13 @@ if(isset($_POST['sign_up'])){
         $usernameCheck = selectOne('users', ['username' => $_POST['username']]);
         $useremailCheck = selectOne('users', ['email' => $_POST['email']]);
 
-        if($usernameCheck){
+        if(isset($usernameCheck)){
             if($usernameCheck['username'] == $_POST['username']){
                 $errors['username'] = "Username already registered";
             }    
         }
         
-        if($useremailCheck){
+        if(isset($useremailCheck)){
             if($useremailCheck['email'] == $_POST['email']){
                 $errors['email'] = "Email already Registered";
             }
@@ -97,12 +85,7 @@ if(isset($_POST['sign_up'])){
             //Flash message
 
             sendVerification($_POST['email'], $_POST['username'], $_POST['token']);
-
-            $_SESSION['message'] = "You are now Registered, Please verify your Email Address";
-            $_SESSION['alert-class'] = "alert-success";
-
-            header('location:' . BASE_URL .'/app/index.php');
-            exit();
+            successful_msg("You are now Registered, Please verify your Email Address", BASE_URL .'/app/index.php');
 
         }else {$errors['db_error'] = "Registration not successful";}
 
@@ -113,6 +96,7 @@ if(isset($_POST['sign_up'])){
         $email = $_POST['email'];
         $password = $_POST['password'];
         $password_2 = $_POST['password_2'];
+        $ref = $_POST['referrer_id'];
     }
 
 }
@@ -161,16 +145,9 @@ if(isset($_POST['sign_in'])){
             $_SESSION['admin'] = $userDetail['admin'];
             $_SESSION['referrer_id'] = $userDetail['referrer_id'];
 
-            $todayDate = date("Y-m-d H: i: s");
-            $updater = update('users', $_SESSION['id'], ['last_login'=> $todayDate ]);
-
             //Flash message
 
-            $_SESSION['message'] = "Welcome, You are now Logged in";
-            $_SESSION['alert-class'] = "alert-success";
-
-            header('location:' . BASE_URL .'/app/index.php');
-            exit();
+            successful_msg("Welcome, You are now Logged in", BASE_URL .'/app/index.php');
 
             }
         }
@@ -230,16 +207,8 @@ if(isset($_POST['log_in'])){
             $_SESSION['referrer_id'] = $userDetail['referrer_id'];
 
             //Flash message
-            $_SESSION['message'] = "Login Successful";
-            $_SESSION['alert-class'] = "alert-success";
 
-            if($_SESSION['admin'] >= 3){
-                header('location:' . BASE_URL .'/admin/index.php');
-                exit();
-            }
-
-            header('location:' . BASE_URL .'/app/index.php');
-            exit();
+            successful_msg("Welcome, You are now Logged in", BASE_URL .'/admin/index.php');
 
             }
         }
@@ -290,7 +259,7 @@ if(isset($_POST['update_profile'])){
     //     $errors['updated'] = "Profile has been updated in the past";
 
     //     $_SESSION['message'] = "Your Profile is Updated";
-    //     $_SESSION['alert-class'] = "alert-success";
+    //     $_SESSION['alert-class'] = "success";
     //     header("location: ../app/profile.php");
     //     exit();
     // }
@@ -298,10 +267,7 @@ if(isset($_POST['update_profile'])){
     if (count($errors) === 0){
 
         $profile_id = update('users', $_SESSION['id'], $_POST);
-        $_SESSION['message'] = "Profile Updated successfully";
-        $_SESSION['alert-class'] = "alert-success";
-        header("location: ../app/profile.php");
-        exit();
+        successful_msg("Profile Updated successfully", BASE_URL .'/app/profile.php');
     }
 
     else{
@@ -344,10 +310,8 @@ if(isset($_POST['update_password'])){
             $result = mysqli_query($conn, $sql);
 
             if($result){
-                $_SESSION['message'] = "Password Updated successfully";
-                $_SESSION['alert-class'] = "alert-success";
-                header("location: ../app/profile.php");
-                exit();
+
+                successful_msg("Password Updated successfully", BASE_URL .'/app/profile.php');
             }
 
         }
@@ -381,7 +345,9 @@ if(isset($_POST['forgot_password'])){
         $result = $stmt->get_result();
         $userDetail = $result->fetch_assoc();
         $userCount = $result->num_rows;
-        $token = $userDetail['token'];
+        if(isset($userDetail)){
+            $token = $userDetail['token'];
+        }
         $stmt->close();
 
         if($userCount < 1){
@@ -468,12 +434,8 @@ function verifyUser($token){
             $_SESSION['email'] = $user['created_at'];
     
             //Flash message
-    
-            $_SESSION['message'] = "Your Email has been verified successfully";
-            $_SESSION['alert-class'] = "alert-success";
-    
-            header('location:' . BASE_URL .'/app/index.php');
-            exit();
+            successful_msg("Your Email has been verified successfully", BASE_URL .'/app/index.php');
+            
         }
 
         else {

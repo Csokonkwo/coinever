@@ -28,8 +28,12 @@ function creditUser($package, $amount, $user_id, $t_id, $payment_m){
         $percentage = 0.020;
     }
     
-    if($package == 'Premium'){
+    if($package == 'Standard'){
         $percentage = 0.030;
+    }
+
+    if($package == 'Premium'){
+        $percentage = 0.040;
     }
     
     $finalPercentage = $percentage * $amount;

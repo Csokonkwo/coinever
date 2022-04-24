@@ -7,6 +7,14 @@ function dd($value){
     die();
 }
 
+function successful_msg($success_msg, $location){
+    $_SESSION['message'] = $success_msg;
+    $_SESSION['alert-class'] = "success";
+
+    header("location: " . $location);
+    exit();
+}
+
 function executeQuery($sql, $data){
 
     global $conn;
@@ -185,71 +193,50 @@ function delete($table, $id){
     return $stmt->affected_rows;
 }
 
-function calculateTotal($table, $id, $type, $status){
+
+function sum($column, $table, $conditions = []){
 
     global $conn;
 
-    $sql = "SELECT amount FROM $table WHERE user_id = '$id' AND type = '$type' AND status = '$status' ";
-    $results = mysqli_query($conn, $sql);
-    $total = 0;
-    while($row = mysqli_fetch_assoc($results)){
+    $sql = "SELECT $column FROM $table";
+    if(empty($conditions)){
+        $results = mysqli_query($conn, $sql);
+        $total = 0;
+        while($row = mysqli_fetch_assoc($results)){
         $total += $row['amount'];
+        }
 
+    }else{
+        $i = 0;
+
+        foreach($conditions as $key => $value){
+            if ($i === 0){
+                $sql = $sql." WHERE $key = $value";
+            }
+            else{
+                $sql = $sql." AND $key = $value";
+            }
+            $i++;
+        }
+        $results = mysqli_query($conn, $sql);
+        $total = 0;
+        echo mysqli_error($conn);
+        while($row = mysqli_fetch_assoc($results)){
+        $total += $row['amount'];
+        } 
+        
     }
  
     return $total;
+
 }
 
-function calculateTotal2($id, $type){
-
-    global $conn;
-
-    $sql = "SELECT amount FROM transactionz WHERE user_id = '$id' AND type = '$type' AND (status = 'confirmed' OR status = 'paid' OR status = 'pending')";
-    $results = mysqli_query($conn, $sql);
-    $total = 0;
-    while($row = mysqli_fetch_assoc($results)){
-        $total += $row['amount'];
-
-    }
-
-    return $total;
-}
-
-function calculateShares($id, $type){
-
-    global $conn;
-
-    $sql = "SELECT amount FROM shares WHERE user_id = '$id' AND type = '$type' AND (status = 'completed' OR status = 'pending')";
-    $results = mysqli_query($conn, $sql);
-    $total = 0;
-    while($row = mysqli_fetch_assoc($results)){
-        $total += $row['amount'];
-
-    }
-
-    return $total;
-}
-
-function calculateQty($id, $type){
-
-    global $conn;
-
-    $sql = "SELECT quantity FROM shares WHERE user_id = '$id' AND type = '$type' AND status = 'completed' ";
-    $results = mysqli_query($conn, $sql);
-    $total = 0;
-    while($row = mysqli_fetch_assoc($results)){
-        $total += $row['quantity'];
-
-    }
-
-    return $total;
-}
 
 function checkRows($id, $type, $status){
 
     global $conn;
 
-    $sql = "SELECT * FROM transactionz WHERE user_id = '$id' AND type = '$type' AND status = '$status'";
+    $sql = "SELECT * FROM transactions WHERE user_id = '$id' AND type = '$type' AND status = '$status'";
     $results = mysqli_query($conn, $sql);
     $rowNumbers = mysqli_num_rows($results);
     return $rowNumbers;
@@ -264,22 +251,6 @@ function checkRefRows($table, $user){
     $results = mysqli_query($conn, $sql);
     $rowNumbers = mysqli_num_rows($results);
     return $rowNumbers;
-}
-
-
-function pendingDeposits($type, $status){
-
-    global $conn;
-
-    $sql = "SELECT amount FROM transactionz WHERE type = '$type' AND status = '$status' ";
-    $results = mysqli_query($conn, $sql);
-    $total = 0;
-    while($row = mysqli_fetch_assoc($results)){
-        $total += $row['amount'];
-
-    }
-
-    return $total;
 }
 
 

@@ -10,17 +10,17 @@ require_once 'server.php';
 <html lang="en">
 <head>
 
-<?php  include("head.php"); ?>
+<?php include(ROOT_PATH . '/register/includes/head.php'); ?>
     
 </head>
 
 <body>
    
-    <?php  include("../includes/header.php"); ?>
+<?php include(ROOT_PATH . '/register/includes/header.php'); ?>
 
     <!-------------- Hero Section --------->
         
-    <?php include(ROOT_PATH . "/includes/hero.php"); ?>
+    
 
 <div class="form">
         <div class="container">
@@ -58,7 +58,7 @@ require_once 'server.php';
 
 
 
-    <?php  include("../includes/footer.php"); ?>
+       <?php include(ROOT_PATH . '/register/includes/footer.php'); ?>
        
 </body>
 </html>

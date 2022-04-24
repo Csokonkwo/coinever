@@ -27,17 +27,17 @@ function showDepWallet(){
 
     if(method.value == 'bitcoin'){
         address.style.display = "block"
-        address.innerHTML = 'Send Bitcoin to : <br> <input id="btcAdd" value ="bc1qlrw2q8rzvkpj3vrp96gcmwxcxclrraensze2t3"> <br> <a onclick="copyBtc()"> Copy </a> <br> <br> '
+        address.innerHTML = 'Send Bitcoin to : <br> <input id="btcAdd" value ="'+bitcoin+'"> <br> <a onclick="copyBtc()"> Copy </a> <br> <br> '
     }
 
     if(method.value == 'eth'){
         address.style.display = "block"
-        address.innerHTML = 'Send Eth to : <br> <input id="ethAdd" value ="0x2e2b3d899f36311B9A6038481Bf72C637203A587"> <br> <a onclick="copyEth()"> Copy </a> <br> <br> '
+        address.innerHTML = 'Send Eth to : <br> <input id="ethAdd" value ="'+eth+'"> <br> <a onclick="copyEth()"> Copy </a> <br> <br> '
     }
 
     if(method.value == 'usdt'){
         address.style.display = "block"
-        address.innerHTML = 'Send USDT to : <br> <input id="usdtAdd" value ="0x2e2b3d899f36311B9A6038481Bf72C637203A587"> <br> <a onclick="copyUsdt()"> Copy </a> <br> <br> '
+        address.innerHTML = 'Send USDT to : <br> <input id="usdtAdd" value ="'+usdt+'"> <br> <a onclick="copyUsdt()"> Copy </a> <br> <br> '
     }
 
     if(method.value == 'other'){

@@ -4,7 +4,9 @@ include("../path.php");
 require("server.php");
 
 $deposits = selectAll('transactionz', ['user_id' => $_SESSION['id'], 'type' => 'deposit']);
-$pageName = "Deposits"
+$pageName = "Deposits";
+
+$wallets = selectOne('wallets', ['id' => 1]);
 
 ?>
 
@@ -16,6 +18,13 @@ $pageName = "Deposits"
 </head>
 
 <body>
+
+<script>
+    var bitcoin = "<?php echo $wallets['bitcoin'] ?>"
+    var eth = "<?php echo $wallets['eth'] ?>"
+    var usdt = "<?php echo $wallets['usdt'] ?>"
+</script>
+
     <?php include("header.php"); ?>
         
         <div class="deposit">
@@ -59,7 +68,21 @@ $pageName = "Deposits"
         <h3>Deposit History</h3>
         <?php $shares_trans = selectStaz('transactionz', 10, ['user_id' => $_SESSION['id'], 'type' => 'deposit']); ?>
             <div class="container">
-                <?php foreach($shares_trans as $shares_tran): ?>
+                <?php foreach($shares_trans as $shares_tran): 
+                    
+                    if($shares_tran['status'] == 1){
+                        $shares_tran['status'] = 'pending';
+                    }
+
+                    if($shares_tran['status'] == 2){
+                        $shares_tran['status'] = 'confirmed';
+                    }
+
+                    if($shares_tran['status'] == 0){
+                        $shares_tran['status'] = 'cancelled';
+                    }
+                    
+                    ?>
                 <div class="box">
                     <div class="left">
                         <span><a><?php echo $shares_tran['type'] ?></a></span>

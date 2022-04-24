@@ -254,6 +254,12 @@ p{
     .contact .container{
         flex-direction: column;
     }
+
+        
+    .contact .container .left .text-input,
+    .contact .container .left textarea{
+        width: 100%;
+    }
 }
 
 

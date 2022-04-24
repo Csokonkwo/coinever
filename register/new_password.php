@@ -14,16 +14,16 @@ if(!isset($_GET['new_pass'])){
 <html lang="en">
 <head>
     
-<?php  include("head.php"); ?>
+<?php include(ROOT_PATH . '/register/includes/head.php'); ?>
 
 </head>
 <body>
     
-    <?php  include("../includes/header.php"); ?>
+<?php include(ROOT_PATH . '/register/includes/header.php'); ?>
 
     <!-------------- Hero Section --------->
         
-    <?php include(ROOT_PATH . "/includes/hero.php"); ?>
+    
 
             <div class="form">
                 <div class="container">
@@ -39,11 +39,11 @@ if(!isset($_GET['new_pass'])){
                     <?php endif ?>
 
                     <div>
-                        <input type="password" name="password" placeholder="New Password" class="text-input">
+                        <input type="password" name="password" placeholder="New Password" class="text-input" oninput="checkLength(this, 6)">
                     </div>
 
                     <div class="form-group">
-                        <input type="password" placeholder="Confirm New Password" name="password_2" class="text-input">
+                        <input type="password" placeholder="Confirm New Password" name="password_2" class="text-input" oninput="checkLength(this, 6)">
                     </div>
 
                     <div class="form-group">
@@ -58,6 +58,6 @@ if(!isset($_GET['new_pass'])){
         </div>
     
 
-    <?php  include("../includes/footer.php"); ?>
+    <?php include(ROOT_PATH . '/register/includes/footer.php'); ?>
 </body>
 </html>

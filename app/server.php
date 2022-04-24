@@ -21,14 +21,14 @@ if($ban['ban'] == 1){
     exit();
 }
 
-$confirmedDeposits = calculateTotal('transactionz', $_SESSION['id'], 'deposit', 'confirmed');
-$confirmedReferrals = calculateTotal('transactionz', $_SESSION['id'], 'referral', 'confirmed');
-$confirmedInterests = calculateTotal('interests', $_SESSION['id'], 'interest', 'paid');
-$confirmedCredits = calculateTotal('transactionz', $_SESSION['id'], 'transfer', 'received');
+$confirmedDeposits = sum('amount', 'transactionz', ['user_id'=> $_SESSION['id'], 'type'=> '"deposit"', 'status'=> '3']);
+$confirmedReferrals = sum('amount', 'transactionz', ['user_id'=> $_SESSION['id'], 'type'=> '"referral"', 'status'=> '3']);
+$confirmedInterests = sum('amount', 'interests', ['user_id'=> $_SESSION['id'], 'type'=> '"interest"', 'status'=> '3']);
+$confirmedCredits = sum('amount', 'transactionz', ['user_id'=> $_SESSION['id'], 'type'=> '"transfer"', 'status'=> '3']);
 
-$confirmedCashouts = calculateTotal2($_SESSION['id'], 'withdrawal');
-$confirmedinvestments = calculateTotal2($_SESSION['id'], 'investment');
-$confirmedDebits = calculateTotal('transactionz', $_SESSION['id'], 'transfer', 'sent');
+$confirmedCashouts = sum('amount', 'transactionz', ['user_id'=> $_SESSION['id'], 'type'=> '"withdrawal"', 'status'=> '3']);
+$confirmedinvestments = sum('amount', 'transactionz', ['user_id'=> $_SESSION['id'], 'type'=> '"investment"', 'status'=> '2']);
+$confirmedDebits = sum('amount', 'transactionz', ['user_id'=> $_SESSION['id'], 'type'=> '"transfer"', 'status'=> '2']);
 
 $income = $confirmedDeposits + $confirmedReferrals + $confirmedInterests + $confirmedCredits;
 $expenditure = $confirmedCashouts + $confirmedinvestments + $confirmedDebits;
@@ -74,7 +74,7 @@ if(isset($_POST['deposit'])){
     if (count($errors) === 0){
         
         $hashCheck = selectOne('transactionz', ['reference' => $_POST['reference']]);
-        $pendingCheck = selectOne('transactionz', ['user_id'=> $_SESSION['id'], 'type'=> 'deposit', 'status'=> 'pending' ]);
+        $pendingCheck = selectOne('transactionz', ['user_id'=> $_SESSION['id'], 'type'=> 'deposit', 'status'=> 0 ]);
 
         if(isset($pendingCheck)){
             $errors['pendingCheck'] = "You currently have pending Deposit";
@@ -88,7 +88,7 @@ if(isset($_POST['deposit'])){
             unset($_POST['deposit']);
     
             $_POST['user_id'] = $_SESSION['id'];
-            $_POST['status'] = 'pending';
+            $_POST['status'] = '1';
             $_POST['type'] = 'deposit';
             
             $makeDeposit = createUser('transactionz', $_POST);
@@ -131,7 +131,7 @@ if(isset($_POST['withdraw'])){
 
     if (count($errors) === 0){
         
-        $pendingCheck = selectOne('transactionz', ['user_id'=> $_SESSION['id'], 'type'=> 'withdrawal', 'status'=> 'pending' ]);
+        $pendingCheck = selectOne('transactionz', ['user_id'=> $_SESSION['id'], 'type'=> 'withdrawal', 'status'=> 0 ]);
 
         if(isset($pendingCheck)){
             $errors['pendingCheck'] = "You have a pending withdrawal";
@@ -146,7 +146,7 @@ if(isset($_POST['withdraw'])){
             unset($_POST['withdraw']);
 
             $_POST['user_id'] = $_SESSION['id'];
-            $_POST['status'] = 'pending';
+            $_POST['status'] = 1;
             $_POST['type'] = 'withdrawal';
             
             $makeDeposit = createUser('transactionz', $_POST);
@@ -200,7 +200,7 @@ if(isset($_POST['invest'])){
                 $amountt = $_POST['amount'] * 0.05;
                 $_GET['amount'] = $amountt;
                 $_GET['user_id'] = $_SESSION['referrer_id'];
-                $_GET['status'] = 'confirmed';
+                $_GET['status'] = 1;
                 $_GET['type'] = 'referral';
                 $_GET['payment_method'] = 'Nil';
 
@@ -210,9 +210,9 @@ if(isset($_POST['invest'])){
         }
 
         $_POST['user_id'] = $_SESSION['id'];
-        $_POST['status'] = 'confirmed';
+        $_POST['status'] = 1;
         $_POST['type'] = 'investment';
-        $_POST['payment_method'] = '0';
+        $_POST['payment_method'] = '1';
         
         $makeInvest = createUser('transactionz', $_POST);
 
@@ -268,7 +268,7 @@ if(isset($_POST['transfer'])){
             $_GET['user_id'] = $_POST['receiver_id'];
             $_GET['amount'] = $_POST['amount'] - $charge;
             $_GET['type'] = 'transfer';
-            $_GET['status'] = 'received';
+            $_GET['status'] = 3;
             $_GET['reference'] = $_SESSION['username'];
             $_GET['payment_method'] = 'credit';
 
@@ -278,7 +278,7 @@ if(isset($_POST['transfer'])){
                 unset($_POST['receiver_id']);
                 $_POST['user_id'] = $_SESSION['id'];
                 $_POST['type'] = 'transfer';
-                $_POST['status'] = 'sent';
+                $_POST['status'] = 2;
                 $_POST['reference'] = $reciever['username'];
                 $_POST['payment_method'] = 'debit'; 
                 

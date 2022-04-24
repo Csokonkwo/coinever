@@ -26,7 +26,7 @@ $pageName = "Blog";
         <div class="blog">
             <h1>Recent Posts</h1>
             <div class="container">
-            <?php $news = selectStaz('news', 20 , ['published' => 1]); 
+            <?php $news = selectStaz('blog', 20 , ['published' => 1]); 
                 foreach($news as $new):
                 ?>
                 <div class="box">

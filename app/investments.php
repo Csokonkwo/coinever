@@ -42,9 +42,10 @@ $investments = selectAll('transactionz', ['user_id' => $_SESSION['id'], 'type' =
                         </div>
                         
                         <select name="reference" id="invest-plan" oninput="return calcInv()">
-                            <option value="Basic">Basic</option>
-                            <option value="Regular">Regular</option>
-                            <option value="Premium">Premium</option>
+                            <option value="Bronze">Bronze</option>
+                            <option value="Silver">Silver</option>
+                            <option value="Gold">Gold</option>
+                            <option value="Diamond">Diamond</option>
                         </select>
 
                         <p id="expecteda"> </p> <br>
@@ -62,7 +63,25 @@ $investments = selectAll('transactionz', ['user_id' => $_SESSION['id'], 'type' =
         <h3>Investment History</h3>
         <?php $shares_trans = selectStaz('transactionz', 10, ['user_id' => $_SESSION['id'], 'type' => 'investment']); ?>
             <div class="container">
-                <?php foreach($shares_trans as $shares_tran): ?>
+                <?php foreach($shares_trans as $shares_tran):
+                    
+                    if($shares_tran['status'] == 1){
+                        $shares_tran['status'] = 'pending';
+                    }
+        
+                    if($shares_tran['status'] == 2){
+                        $shares_tran['status'] = 'confirmed';
+                    }
+        
+                    if($shares_tran['status'] == 3){
+                        $shares_tran['status'] = 'completed';
+                    }
+
+                    if($shares_tran['status'] == 0){
+                        $shares_tran['status'] = 'cancelled';
+                    }
+                    
+                    ?>
                 <div class="box">
                     <div class="left">
                         <span>Transaction ID: <?php echo $shares_tran['id'] ?></span>

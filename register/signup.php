@@ -1,15 +1,14 @@
 <?php 
 $pageName = 'Sign up';
 include("../path.php");
-require_once 'server.php'; 
 
 if(isset($_GET['ref'])){
     $ref = $_GET['ref'];
+}else{
+    $ref = '000';
 }
 
-else{
-    $ref = 'N/A';
-}
+require_once 'server.php'; 
 
 
 ?>
@@ -18,18 +17,18 @@ else{
 <html lang="en">
 <head>
         
-<?php  include("head.php"); ?>
+<?php include(ROOT_PATH . '/register/includes/head.php'); ?>
 
 </head>
 
 <body>
    
-    <?php  include("../includes/header.php"); ?>
+    <?php include(ROOT_PATH . '/register/includes/header.php'); ?>
 
         <div class="form">
            <div class="container">
 
-                <form action="signup.php" method="POST" onSubmit="return validateReg(this)">
+                <form action="signup.php" method="POST" onsubmit="return validateReg(this)">
                 
                     <h3 class="center">Register an Account</h3>
                     <p class=""> <br>
@@ -47,8 +46,8 @@ else{
                     <span>Username</span>
                     <div> 
                         <i class="fa fa-user"></i>
-                        <input id="r_user" type="text" name="username" placeholder="e.g. Tiarawoods" value="<?Php echo $username; ?>" oninput="checkLength(this)">
-                        <label id="r_user_2" for=""></label>
+                        <input class="username" type="text" name="username" placeholder="i.e. michael" value="<?Php echo $username; ?>" oninput="checkLength(this, 4)">
+                        <label class="username_label" for=""></label>
                     </div>
                     
                     <input type="hidden" name="referrer_id" value="<?php echo $ref ?>">
@@ -56,27 +55,27 @@ else{
                     <span>Email Address</span>
                     <div>
                         <i class="fa fa-envelope"></i>
-                        <input id ="emai" type="email" name="email" placeholder="e.g. Tiarawoods@example.com" value="<?Php echo $email; ?>" oninput="checkLength(this)">
-                        <label id="r_emai" for=""></label>
+                        <input class="email" type="email" name="email" placeholder="i.e. michael@example.com" value="<?Php echo $email; ?>" oninput="checkLength(this, 10)">
+                        <label class="email_label" for=""></label>
                     </div>
 
                     <span>Set Password</span>
                     <div>
                         <i class="fa fa-lock"></i>
-                        <input id ="r_pass" type="password" name="password" placeholder="Password" oninput="checkLength(this)">
-                        <label id ="r_pass_l" for=""></label>
+                        <input class="password" type="password" name="password" placeholder="Password" oninput="checkLength(this, 6)">
+                        <label class="password_label" for=""></label>
                     </div>
 
                     <span>Confirm Password</span>
                     <div>
                         <i class="fa fa-lock"></i>
-                        <input id ="r_pass_2" type="password" name="password_2" placeholder="Confirm Password" oninput="validatePassword(this)">
-                        <label id ="r_pass_2_l" for=""></label>
+                        <input class="password_2" type="password" name="password_2" placeholder="Confirm Password" oninput="validatePassword(this)">
+                        <label class="password_2_label" for=""></label>
                     </div>
 
 
                     <div>
-                        <select name="country" id="country" class="text-input">
+                        <select name="country" id="country" class="text-input" required>
                             <option value="">Select Country</option>
                             <option value="Afganistan">Afghanistan</option>
                             <option value="Albania">Albania</option>
@@ -347,8 +346,7 @@ else{
            <div class="right"></div>
        </div>
 
-
-    <?php  include("../includes/footer.php"); ?>
+    <?php include(ROOT_PATH . '/register/includes/footer.php'); ?>
        
 </body>
 </html>

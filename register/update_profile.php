@@ -17,15 +17,15 @@ if(!isset($_SESSION['id'])){
 <html lang="en">
 <head>
         
-<?php  include("head.php"); ?>
+<?php include(ROOT_PATH . '/register/includes/head.php'); ?>
 
 </head>
 <body>
-<?php  include("../includes/header.php"); ?>
+<?php include(ROOT_PATH . '/register/includes/header.php'); ?>
 
 <!-------------- Hero Section --------->
     
-<?php include(ROOT_PATH . "/includes/hero.php"); ?>
+
 
 
     <div class="form">
@@ -321,6 +321,6 @@ if(!isset($_SESSION['id'])){
         </form>
         </div>
     </div>
-    <?php  include("../includes/footer.php"); ?>
+    <?php include(ROOT_PATH . '/register/includes/footer.php'); ?>
 </body>
 </html>

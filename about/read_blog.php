@@ -5,7 +5,7 @@ include(ROOT_PATH . "/includes/dbFunctions.php");
 $pageName = "Read Blog";
 
 if(isset($_GET['id'])){
-    $new = selectOne('news', ['id' => $_GET['id']]);
+    $new = selectOne('blog', ['id' => $_GET['id']]);
     
 }
 

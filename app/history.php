@@ -30,6 +30,22 @@ $pageName = "History";
             else if ($shares_tran['type'] == "withdrawal"){
                 $color = 'red';
             }
+
+            if($shares_tran['status'] == 1){
+                $shares_tran['status'] = 'pending';
+            }
+
+            if($shares_tran['status'] == 2){
+                $shares_tran['status'] = 'confirmed';
+            }
+
+            if($shares_tran['status'] == 3){
+                $shares_tran['status'] = 'completed';
+            }
+
+            if($shares_tran['status'] == 0){
+                $shares_tran['status'] = 'cancelled';
+            }
                 
             ?>
             <div class="box">

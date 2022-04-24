@@ -85,7 +85,25 @@ $withdraws = selectAll('transactionz', ['user_id' => $_SESSION['id'], 'type' => 
         <h3>Withdrawal History</h3>
         <?php $shares_trans = selectStaz('transactionz', 15, ['user_id' => $_SESSION['id'], 'type' => 'withdrawal']); ?>
             <div class="container">
-                <?php foreach($shares_trans as $shares_tran): ?>
+                <?php foreach($shares_trans as $shares_tran): 
+                    
+                    if($shares_tran['status'] == 1){
+                        $shares_tran['status'] = 'pending';
+                    }
+        
+                    if($shares_tran['status'] == 2){
+                        $shares_tran['status'] = 'confirmed';
+                    }
+        
+                    if($shares_tran['status'] == 3){
+                        $shares_tran['status'] = 'completed';
+                    }
+
+                    if($shares_tran['status'] == 0){
+                        $shares_tran['status'] = 'cancelled';
+                    }
+                    
+                    ?>
                 <div class="box">
                     <div class="left">
                         <span><a><?php echo $shares_tran['type'] ?></a></span>
