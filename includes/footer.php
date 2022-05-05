@@ -1,75 +1,70 @@
 <footer>
-        <div class="container">
-            <div class="box one">
-                <h2> <?php echo $companyName; ?></h2>
-                <p>
-                <?php echo $companyName;?> provides you an opportunity to convert your dreams into reality.<br><br>
+        <div class="top">
+            <img src="<?php echo BASE_URL . '/img/icon.png' ?>">
+            <a id="google_translate_element"></a>
 
-                Our 24/7 online customer support, our reliable and easy accessible web interface have made customer services better. We inspire confidence in finance. Stay with us. </p>
-                <a href="<?php echo BASE_URL . '/about.php'?>">READ MORE</a>
-                </p>
-            </div>
-            
-            <div class="box two">
-                <h2>Data Protection</h2>
-                <p>
-                    All personal data which you provide the company are stored in an environment of strict confidentiality and are protected by the Law on protection of personal data.
-                </p>
-            </div>
-            
-            <div class="box three">
-                <h2>Quick Links</h2>
-                <div class="content">
-                    <ul>
-                        <li><a href="<?php echo BASE_URL . '/about/faqs.php'?>"><i class="fas fa-angle-double-right"></i> Faqs</a></li>
-                        <li><a href="<?php echo BASE_URL . '/register/signup.php'?>"><i class="fas fa-angle-double-right"></i> Register</a></li>
-                        <li><a href="<?php echo BASE_URL . '/register/signin.php'?>"><i class="fas fa-angle-double-right"></i> Login</a></li>
-                        <li><a href="<?php echo BASE_URL . '/terms.php'?>"><i class="fas fa-angle-double-right"></i> Our Terms</a></li>
-                        <li><a href="<?php echo BASE_URL . '/about/affiliate.php'?>"><i class="fas fa-angle-double-right"></i> Affilate Program</a></li>
-                    </ul>
-                    
-                    <ul>
-                        <li><a href="<?php echo BASE_URL . '/docs/CM-CERTIFICATE-OF-INCORPORATION.pdf'?>" download><i class="fas fa-angle-double-right"></i> Certificate Of Incorporation</a></li>
-                        <li><a href="<?php echo BASE_URL . '/docs/CM-Whitepaper.pdf'?>" download><i class="fas fa-angle-double-right"></i> ACM White Paper</a> </li>
-                        <li><a href="<?php echo BASE_URL . '/docs/CM-Investors.pdf'?>" download><i class="fas fa-angle-double-right"></i> ACM Investors</a></li>
-                    
-                        <li><a href="<?php echo BASE_URL . '/about/privacy.php'?>"><i class="fas fa-angle-double-right"></i> Privacy Policy</a></li></li>
-                    </ul>
-                    
-                </div>
-            </div>
-            
-            <div class="box four">
-                <h2>Contact Us</h2>
-                <p>
-                    <a style="display: inline;" href=""><i style="color:white" class="fa fa-whatsapp"></i> </a> <a style="display: inline;" href="#"><i style="color:white" class="fa fa-telegram"></i> </a>
-                    
-                    <!--- <a href=""><i class="fas fa-phone-alt"></i> +xczcdcsdcec</a> --->
+            <script type="text/javascript">
+            function googleTranslateElementInit() {
+                new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
+            }
+            </script>
 
-                    <a href="mailto:support@<?php echo $companyEmail; ?>"><i class="fas fa-envelope"></i> support@<?php echo $companyEmail; ?>.com</a>
-                    <a href=""><i class="fas fa-map-marker-alt"></i> Head Office: <?php echo $companyLocation; ?> </a>
-                    
-                    <a id="google_translate_element"></a>
-
-                    <script type="text/javascript">
-                    function googleTranslateElementInit() {
-                        new google.translate.TranslateElement({pageLanguage: 'en'}, 'google_translate_element');
-                    }
-                    </script>
-
-                    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-                
-                </p>
-            </div>
-            
+            <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
         </div>
         
+        <div class="middle">
+            <div class="wrapper">
+                <div class="box">
+                    <h3>Banking</h3>
+                    <ul>
+                        <li><a href="<?php echo BASE_URL . '/personal/lending.php' ?>">Loan Banking</a></li>
+                        <li><a href="<?php echo BASE_URL . '/personal/index.php' ?>">Personal Banking</a></li>
+                        <li><a href="<?php echo BASE_URL . '/business/index.php' ?>">Business Banking</a></li>
+                        <li><a href="<?php echo BASE_URL . '/mortgage/residential.php' ?>">Residential Loans</a></li>
+                        <li><a href="<?php echo BASE_URL . '/sustain.php' ?>">Sustainability</a></li>
+                    </ul>
+                </div>
+                
+                <div class="box">
+                    <h3>Transfers</h3>
+                    <ul>
+                        <li><a href="<?php echo BASE_URL . '/transfers/western.php' ?>">Western Union</a></li>
+                        <li><a href="<?php echo BASE_URL . '/transfers/ria.php' ?>">Ria Money Transfer</a></li>
+                        <li><a href="<?php echo BASE_URL . '/transfers/moneygram.php' ?>">MoneyGram</a></li>
+                    </ul>
+                </div>
+                
+                <div class="box">
+                    <h3>Security</h3>
+                    <ul>
+                    <li><a href="<?php echo BASE_URL . '/security/anti_fraud.php' ?>">Anti-fraud</a></li>
+                        <li><a href="<?php echo BASE_URL . '/security/tips.php' ?>">Security Tips</a></li>
+                        <li><a href="<?php echo BASE_URL . '/security/code.php' ?>">Secure Code</a></li>
+                    </ul>
+                </div>
+                
+                <div class="box">
+                    <h3>Help</h3>
+                    <ul>
+                        <li><a href="<?php echo BASE_URL . '/index.php' ?>">Home</a></li>
+                        <li><a href="<?php echo BASE_URL . '/contact.php' ?>">Contact</a></li>
+                        <li><a href="<?php echo BASE_URL . '/terms.php' ?>">Terms</a></li>
+                        <li><a href="<?php echo BASE_URL . '/privacy.php' ?>">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+            </div>
+        </div>
+        
+        
         <div class="bottom">
-            Copyright &copy; 2021  <?php echo $companyName; ?>. All rights reserved.
+            <div class="wrapper">
+                <p>&copy; 2022. <?php echo $companyName  ?>. A <?php echo $companyRealName  ?> Company.</p>
+            </div>
         </div>
     
     </footer>
-
+    
     <script src="js/scroll-out.js"></script>
     <script> ScrollOut({
             targets: ".about-content, .about-image"

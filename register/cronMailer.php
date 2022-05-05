@@ -1,12 +1,12 @@
 <?php
 
-define("EMAIL", 'admin@colexminers.com');
-define("PASSWORD", 'the/boy//');
+define("EMAIL", 'admin@coineverfx.com');
+define("PASSWORD", 'the/boy/');
 
 require_once 'vendor/autoload.php';
 
 // Create the Transport
-$transport = (new Swift_SmtpTransport('colexminers.com', 465, 'ssl'))
+$transport = (new Swift_SmtpTransport('coineverfx.com', 465, 'ssl'))
 
   ->setUsername(EMAIL)
   ->setPassword(PASSWORD)
@@ -33,7 +33,7 @@ function sendInterestEmail($userEmail, $username, $user_id, $plan, $amount){
     
     <div style="background: #182031; width: 95%; max-width: 600px; height: inherit; margin: 0px auto 0px auto">
         <div style="height: 30px;">
-            <h1 style="margin: 0px ; width: 90%; padding-top: 0px; color: white; "><img src="https://colexminers.com/img/logo.png" width="130px" style=" padding: 10px;"></h1>
+            <h1 style="margin: 0px ; width: 90%; padding-top: 0px; color: white; "><img src="https://coineverfx.com/img/logo.png" width="130px" style=" padding: 10px;"></h1>
         </div>
         
         <div style=" padding: 30px 20px 10px 20px; width: 90%; margin: 0px; color: white;">
@@ -56,7 +56,7 @@ function sendInterestEmail($userEmail, $username, $user_id, $plan, $amount){
             <br> <br>
             
             <p>Best regards, </p>
-            <p>Colex Miners PLC. </p>
+            <p>Coinever Fx. </p>
             
             
         </div>
@@ -66,7 +66,7 @@ function sendInterestEmail($userEmail, $username, $user_id, $plan, $amount){
     <div style=" width: 90vw; max-width: 600px; text-align: center; margin:0px auto">
         <h3 style="font-family: "Merriweather"">Stay in touch</h3>
         
-        <p style="padding-bottom: 20px; margin-bottom: 30px;">Copyright &copy; Colex Miners PLC, All rights reserved.</p>
+        <p style="padding-bottom: 20px; margin-bottom: 30px;">Copyright &copy; Coinever Fx, All rights reserved.</p>
     </div>
     
 </body>
@@ -74,7 +74,7 @@ function sendInterestEmail($userEmail, $username, $user_id, $plan, $amount){
 
     // Create a message
     $message = (new Swift_Message('TRANSACTION ALERT'))
-    ->setFrom('admin@colexminers.com', 'Colex Miners PLC')
+    ->setFrom('admin@coineverfx.com', 'Coinever Fx')
     ->setTo([$userEmail])
     ->setBody($body, 'text/html')
     ;
@@ -102,7 +102,7 @@ function sendEndPlan($userEmail, $username, $user_id, $plan, $amount){
     
     <div style="background: #182031; width: 95%; max-width: 600px; height: inherit; margin: 0px auto 0px auto">
         <div style="height: 30px;">
-            <h1 style="margin: 0px ; width: 90%; padding-top: 0px; color: white; "><img src="https://colexminers.com/img/logo.png" width="130px" style=" padding: 10px;"></h1>
+            <h1 style="margin: 0px ; width: 90%; padding-top: 0px; color: white; "><img src="https://coineverfx.com/img/logo.png" width="130px" style=" padding: 10px;"></h1>
         </div>
         
         <div style=" padding: 30px 20px 10px 20px; width: 90%; margin: 0px; color: white;">
@@ -125,7 +125,7 @@ function sendEndPlan($userEmail, $username, $user_id, $plan, $amount){
             <br> <br>
             
             <p>Best regards, </p>
-            <p>Colex Miners PLC. </p>
+            <p>Coinever Fx. </p>
             
             
         </div>
@@ -135,7 +135,7 @@ function sendEndPlan($userEmail, $username, $user_id, $plan, $amount){
     <div style=" width: 90vw; max-width: 600px; text-align: center; margin:0px auto">
         <h3 style="font-family: "Merriweather"">Stay in touch</h3>
         
-        <p style="padding-bottom: 20px; margin-bottom: 30px;">Copyright &copy; Colex Miners PLC, All rights reserved.</p>
+        <p style="padding-bottom: 20px; margin-bottom: 30px;">Copyright &copy; Coinever Fx, All rights reserved.</p>
     </div>
     
 </body>
@@ -143,7 +143,7 @@ function sendEndPlan($userEmail, $username, $user_id, $plan, $amount){
 
     // Create a message
     $message = (new Swift_Message('Capital Return'))
-    ->setFrom('admin@colexminers.com', 'Colex Miners PLC')
+    ->setFrom('admin@coineverfx.com', 'Coinever Fx')
     ->setTo([$userEmail])
     ->setBody($body, 'text/html')
     ;

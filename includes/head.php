@@ -1,6 +1,6 @@
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
   <link rel="icon" href="<?php echo BASE_URL . '/favicon.ico'?>" type="image/x-icon">
-  <title>ColexMiners <?php if(isset($pageName)){echo " - " . $pageName;}  ?></title>
+  <title>Coineverfx <?php if(isset($pageName)){echo " - " . $pageName;}  ?></title>
 
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">

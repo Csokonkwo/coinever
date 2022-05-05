@@ -1,9 +1,9 @@
 <?php
 
 // $hostname = 'localhost';
-// $dbuser = 'coleqiul_cso';
-// $dbpassword ='filling../';
-// $dbname = 'coleqiul_digitrust';
+// $dbuser = 'coinmmeo_cso';
+// $dbpassword ='drunkman';
+// $dbname = 'coinmmeo_coinever';
 
 $hostname = 'localhost';
 $dbuser = 'root';

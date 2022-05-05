@@ -69,7 +69,7 @@ if(isset($_SESSION['id'])){
                         <button type="submit" name="sign_in" class="btn"> Login</button>
                     </div>
 
-                    <p class="">New to ColexMiners? <a href="signup.php">Sign up</a></p>
+                    <p class="">New to Coinever Fx? <a href="signup.php">Sign up</a></p>
                     
                     <div style="font-size: 0.8em; text-align:center;"><a href="forgot_password.php"> forgot password?</a></div>
 
@@ -79,7 +79,7 @@ if(isset($_SESSION['id'])){
            <div class="right"></div>
        </div>
 
-                    </main>
+    </main>
 
 
     <?php include(ROOT_PATH . '/register/includes/footer.php'); ?>
